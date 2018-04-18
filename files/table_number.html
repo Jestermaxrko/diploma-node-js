@@ -1,0 +1,37 @@
+﻿
+	<div id="gamefield">
+		
+		<div class="condition">
+			<h1 class="game-condition">Вставте у вільну комірку число.Для перевірки відповіді використовуйте кнопку "Check"</h1>
+		</div>
+
+		<div class="game">
+			<div class="tries"><span id="try">Спроби : 0</span></div>
+			<table id="game_table">
+				<tr>
+					<td>14</td>
+					<td>9</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>21</td>
+					<td>8</td>
+					<td>13</td>
+				</tr>
+				<tr>
+					<td>28</td>
+					<td>9</td>
+					<td class="mistery_cell" id="mistery_cell"><input type="number" id="answer"  placeholder="?"></td>
+				</tr>
+
+			</table>
+
+			<div class="check_div">
+				<input id="check-btn" type="button"  class="check game-btn" onclick="checkAnswer()" value="Перевірити">
+			</div>
+		</div>
+	</div>
+
+	
+
+	

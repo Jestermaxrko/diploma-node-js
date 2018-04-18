@@ -1,0 +1,75 @@
+
+#gamefield{
+	margin:auto;
+	margin-top: 0;
+}
+
+.game{
+	text-align: center;
+}
+
+.game-btn{
+	outline: 0;
+	border:none;
+	padding: 10px;
+	border-radius: 7px;
+	font-weight: bold;
+	font-family: 'Saira Semi Condensed', sans-serif;
+
+}
+
+#check-btn {
+	background-color: transparent;
+	border:2px solid #84bab2;
+	color: #84bab2;
+}
+
+#game_table{
+	margin:auto;
+	border-collapse: collapse;
+	margin-bottom: 20px;
+	background-color: white;
+	font-weight: bold;
+	color:rgba(0,0,0,.8);
+
+}
+
+#game_table td{
+	border:2px solid #84bab2;
+	padding: 10px;
+	width: 50px;
+	height: 50px;
+	text-align:center; 
+    vertical-align:middle;
+}
+
+#answer{
+	font-family: 'Saira Semi Condensed', sans-serif;
+	font-size: 1rem;
+	font-weight: bold;
+	color:green;
+	outline: 0;
+	width: 50px;
+	height: 50px;
+	border: none;
+	border-bottom: 2px solid #ccc;
+	text-align: center;
+	outline: 0;
+	background-color: transparent;
+}
+
+
+#answer::-webkit-inner-spin-button{
+	-webkit-appearance: none;
+	margin:0;
+}
+
+#answer:focus{
+	border-bottom: 2px solid green;
+}
+
+.mistery_cell{
+	padding: 0;
+}
+
+

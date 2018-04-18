@@ -1,0 +1,106 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+#test-results{
+	border-bottom: 2px solid #36e2dd;
+}
+
+
+.all-tests{
+	background-color: white;
+}
+
+.logo{
+	width: 30px;
+	height: 30px;
+	
+}
+
+.tests-table{
+	font-family: 'Montserrat', sans-serif;
+	text-align: left;
+	width: 50%;
+	margin: auto;
+	border-collapse: collapse;
+}
+
+.test-table tr{
+	background-color: red;
+}
+
+#search{
+	border: none;
+	outline: 0;
+	border-radius:5px; 
+	padding: 10px 5px;
+	border:2px solid #a0c4ff;
+	border:2px solid #c679f9;
+	transition: width .5s;
+	padding-right: 50px;
+	width: 30%;
+	box-sizing: border-box;
+}
+
+#search:focus{
+	/*width: 90%;*/
+}
+
+#search_btn {
+	background: url("/images/search.png") no-repeat center;
+	outline:none;
+	border: none;
+	background-size: 20px;
+    margin-left: -30px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+#search_btn:hover{
+	opacity: 0.7;
+}
+
+.error_div{
+	font-size: small;
+	display: inline;
+	padding: 5px;
+}
+
+.tests-table th{
+	padding: 5px;
+	height: 30px;
+}
+
+.person-head{
+	background: url("/images/person.png") no-repeat center;
+	background-size: 30px;
+}
+
+.tests-table td{
+	border-bottom: 1px solid #ccc;
+	padding: 5px;
+}
+
+.res-link{
+	color: black;
+}
+
+.person-td{
+	
+	text-align: center;
+	color: white;
+	/*vertical-align: bottom;*/
+	font-size: 0.85em;
+	color:white;
+	background-color: #97b37e;
+	background-color: #ce2b44;
+}
+
+.fixed-width{
+	 width:1%;
+    white-space:nowrap;
+}
+
+.tests-table tr:nth-child(even) {
+	/*background-color: #f2f2f2;*/
+}

@@ -1,0 +1,141 @@
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans|Montserrat|Open+Sans');
+
+body{
+
+	background-color: #3b4663;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7720a0+0,207cca+51,7720a0+100 */
+	
+	
+	background: -moz-linear-gradient(left, #7720a0 0%, #207cca 51%, #7720a0 100%); 
+	background: -webkit-linear-gradient(left, #7720a0 0%,#207cca 51%,#7720a0 100%); 
+	background: linear-gradient(to right, #7720a0 0%,#207cca 51%,#7720a0 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7720a0', endColorstr='#7720a0',GradientType=1 ); 
+
+
+	margin: 0;
+	padding: 0;
+}
+
+
+.user{
+	position: absolute;
+	top:0;
+	right:0;
+}
+
+.user a , .user img{
+	vertical-align: middle;
+	text-align: center;
+}
+
+.user a{
+	
+	padding: 2px 10px;
+	display: block;
+	
+}
+
+.user img{
+	padding-right: 5px;
+	margin-left: 5px;
+}
+
+#profile-link{
+	text-decoration: none;
+	color:white;
+	font-size: small;
+	font-family: 'Montserrat', sans-serif;
+}
+
+
+.user a:hover{
+	background-color: #8eb2ed;
+	cursor: pointer;
+}
+
+.container {
+	margin-top: 50px;
+}
+
+.main h1{
+	font-family: 'Montserrat', sans-serif;
+	display: block;
+	border-bottom: 1px solid #eee;
+	display: block;
+	width:30%;
+	padding-bottom: 2px;
+	margin: auto;
+	margin-bottom: 0px;
+}
+
+
+.main {
+	text-align: center;
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	
+}
+
+.columns {
+	margin-top: 20px;
+	display: flex;
+}
+
+.column{
+	flex:1; 
+	width: 33%; 
+	text-align: center;
+}
+
+
+.column h2 {
+	font-family: 'Open Sans', sans-serif;
+	
+}
+
+.column a {
+	text-decoration: none;
+	color:#81fffa;
+}
+
+.column img {
+	width: 250px;
+}
+
+.column img:hover{
+	opacity: 0.7;
+}
+
+
+@media only screen and (max-width: 900px){
+
+
+	.columns {
+		display: block;
+	}
+
+	.column {
+		
+		text-align: center;
+		margin: auto;
+	}
+
+
+	.column img {
+		width: 100px;
+	}
+
+	.column h2 {
+
+	font-size: 1em;
+
+	}
+
+	.main h1{
+		font-size: 1em;
+	}
+
+} 

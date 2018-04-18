@@ -1,0 +1,236 @@
+
+@import url('https://fonts.googleapis.com/css?family=Exo+2');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Scada');
+
+.create-page{
+	background-color: white;
+	font-family: 'Scada', sans-serif;
+}
+
+#create-test{
+	border-bottom: 2px solid #36e2dd;
+}
+
+.description-div{
+	display: flex;
+}
+
+.editor{
+	flex: 1;
+	width: 50%;
+	border-right: 2px solid #ccc;
+	padding: 5px;
+}
+
+.preview{
+	width: 50%;
+}
+
+.editor-block{
+	margin-bottom: 10px;
+}
+
+#test-name{
+	padding: 10px;
+	font-weight: bold;
+	color:#2c680e;
+}
+
+#desc{
+	padding: 5px;
+	margin-top: 5px;
+}
+
+label{
+	display: block;
+	margin-bottom: 4px;
+	border-left:2px solid #4bc6ba;
+	padding-left: 5px;
+}
+
+.tool_box span{
+	font-size: small;
+	font-weight: normal;
+}
+
+.tag_btn{
+	width: 30px;
+	height: 30px;
+	border:none;
+	outline:0;
+	border:1px solid #ccc;
+	cursor:pointer;	
+	vertical-align: middle;
+}
+
+.tag_btn:hover{
+	opacity: 0.7;
+}
+
+#p_btn{
+	background: url("/images/paragraph.png") no-repeat center;
+	background-size: 20px 20px;
+}
+
+#s_btn{
+	background: url("/images/bold.png") no-repeat center;
+	background-size: 20px 20px;
+}
+
+#i_btn{
+	background: url("/images/italic.png") no-repeat center;
+	background-size: 20px 20px;
+}
+
+.text-field{
+	width: 100%;
+	border: none;
+	outline: 0;
+	border: 2px solid #589279;
+	box-sizing: border-box;
+	border-radius: 4px;
+	resize: none;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.text-field:focus{
+	border: 2px solid green;
+}
+
+
+/*-------------------------ADD GAMES---------------------------*/
+
+.all_games_list{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.all_games_list li{
+	background-color:#589279;
+	margin-bottom:5px;
+	color:white;
+}
+
+.inline-block{
+	display: inline-block;
+	width: 50%;
+}
+
+.game-name a{
+	width: 80%;
+	vertical-align: middle;
+	padding: 10px;
+	box-sizing: border-box;
+	cursor:pointer;
+}
+
+.game-name a:hover{
+	color: #99f5f7;
+}
+
+.game-name .add_btn{
+	width: 20%;
+	height: 40px;
+	vertical-align: middle;
+	
+	border:none;
+	outline:0;
+	cursor: pointer;
+}
+
+.game-name .add_btn:hover{
+	opacity: 0.7;
+}
+.add_btn{
+	background:url("/images/plus_white.png") no-repeat center;
+}
+
+.game-desc{
+	color:#fdfbab;
+	border-top: 1px solid #ccc;
+	font-size: 0.85em;
+	padding: 10px;
+}
+
+/*-------------------FIELD----------------------------*/
+
+.preview h2{
+	margin: 0;
+	margin-top: 5px;
+	padding: 0;
+	color: #589279;
+}
+
+.field{
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 10px;
+	padding: 10px;
+
+}
+
+.field_name{
+	padding: 0;
+	padding-top: 5px;
+	margin: 0;
+	margin-bottom: 5px;
+	font-family: 'Scada', sans-serif;
+	color: #2d2d2d;
+}
+
+.field p{
+	font-family: 'Exo 2', sans-serif;
+}
+
+.description{
+	padding: 0;
+	margin:0;
+	text-align: justify;
+}
+
+.display_inline{
+	display: inline-block;
+}
+
+
+.logo{
+	width: 100px;
+	vertical-align: top;
+	margin-right:  5px;
+}
+
+.info{
+	width: 60%;
+}
+
+.save-div{
+	padding: 10px;
+}
+
+#save-btn{
+	display: block;
+	margin: auto;
+	outline: 0;
+	border:none;
+	padding: 15px 20px;
+	color:#42ffa0;
+	font-size: 1.25em;
+	width: 100%;
+	box-sizing: border-box;
+	background-color: #589279;
+	font-weight: bold;
+	font-family: 'Scada', sans-serif;
+	cursor:pointer;
+	transition: background-color 0.5s;
+}
+
+#save-btn:hover{
+	color:  #42ffa0;
+	background-color: #4c5660;
+}
+
+.error-div {
+	text-align: center;
+	color: #a54040;
+}

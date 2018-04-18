@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Result</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/results.css">
+	<script type="text/javascript" src="/javascripts/time_convert.js"></script>
+</head>
+
+	
+	
+<body>
+		
+	<div class="container">
+
+		<header>
+			<div class="head">
+				<div class="left">
+					<img class="logo" src="https://www.popup-house.com/wp-content/uploads/2017/03/picto-r%C3%A8glementation-bleu-1.png">
+					<h1 class="title"> Результати</h1>
+				</div
+				><div class="right">
+					<a href="/profile" id="all-tests" >Особистий кабінет</a>
+				</div>
+			</div>
+		</header>
+
+		<div class="result-page">
+			<div class="results" id="results">
+				
+				
+				<h2 class="date">Дата проходження : <%=date%></h2>
+
+				<table id="res-table">
+					<tr>
+						<th>Гра</th>
+						<th>Час</th>
+						<th>Спроби</th>
+						<th>Відповідь</th>
+					</tr>
+				</table>
+
+			</div>
+
+			<div class="links">
+				
+			</div>
+			
+		</div>	
+
+
+	</div>	
+<script type="text/javascript">
+		var res = <%- JSON.stringify(result)%>;
+		
+
+		var table = document.getElementById("res-table");
+		for(var i = 0; i < res.test_res.games.length; i++){
+			var row = table.insertRow(i+1);
+			var j =0;
+			for (var key in res.test_res.games[i]){
+				var cell = row.insertCell(j++);
+				
+				switch(key){
+					case "answer":
+						if(res.test_res.games[i][key]){
+							cell.classList.add("right-answer");
+						}
+						else {
+							cell.classList.add("wrong-answer");
+						}
+						break;
+
+					case "time": 
+						cell.innerHTML = getTimeString(res.test_res.games[i][key]);
+						break;
+
+					default: 
+						cell.innerHTML = res.test_res.games[i][key];
+				}
+			}
+		}
+
+	</script>
+
+</body>
+</html>

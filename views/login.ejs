@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/login_page.css">
+</head>
+<body>
+
+	<div class="login_page" id="login_page">
+
+		<form action="loginUser" method="post">	
+			<img class ="logo" src="/images/test.png">
+			<input type="text" name="email" id="email" placeholder="E-mail">
+			<input type="password" name="pass" id="pass" placeholder="Пароль">	
+			<div class="reg-ref">
+				<span >Немає аккаунта ?</span> <a href="/register">Зареєструватись</a>
+			</div>		
+			<input type="submit" name="sub_btn" value="Увійти" class="sign_btn">
+		</form>
+
+		
+
+		<%if(error){%>
+		<div class="error_box" id="error_box">
+				<div  class="inline">
+					<span id="error_message">* <%=error%></span>
+				</div>
+			</div>
+		</div>
+	<%}%>
+
+	</div>
+
+
+	
+<script> </script>
+</body>
+
+</html>

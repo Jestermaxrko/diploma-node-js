@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/register.css">
+</head>
+<body>
+
+	<div class="container">
+		<header >
+			<img src="images/register.png" height="80px">
+			
+		</header>
+
+		<div class="main">
+			
+			<form action="registerUser" method="post">
+				<div class="pair">
+					<label for="firstname" id="l_firstname">Ім'я</label
+					><input type="text" name="firstname" id="firstname" value="<%=firstname%>"></br>
+				</div>
+
+				<div class="pair">
+					<label for="lastname">Прізвище</label
+					><input type="text" name="lastname"  id="lastname" value="<%=lastname%>"></br>
+				</div>
+
+				<div class="pair">
+					<label for="email">Email</label
+					><input type="email" name="email"  id="email" value="<%=email%>"></br>
+				</div>
+
+				<div class="pair">
+					<label for="pass">Пароль</label
+					><input type="password" name="pass"  id="pass"></br>
+				</div>
+
+				<div class="pair last-pair">
+					<label for="pass_conf" id="l_pass_conf">Підтвердження </label
+					><input type="password" name="pass_conf"  id="pass_conf"></br>
+				</div>
+
+				 <input type="submit" value="Реєстрація" id="reg-btn">
+
+			</form>
+
+			<%if(error){%>
+				<div class="error_box" id="error_box">
+						<div  class="inline">
+							<span id="error_message">* <%=error%></span>
+						</div>
+					</div>
+				</div>
+			<%}%>
+		
+		</div>
+
+	</div>
+
+	<script> </script>
+
+</body>
+</html>

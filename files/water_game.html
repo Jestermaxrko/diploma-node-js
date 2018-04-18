@@ -1,0 +1,46 @@
+
+<div id="gamefield">
+	<div class="condition">
+			<h1 class="game-condition">У вас є дві банки: перша - 5-ти літрова, друга - 3-ох літрова. Потрібно в 5-ти літрову набрати чотири літри води.Щоб набрати з джрела воду у банку використовуйте стрілки як знаходять під джерелом.Для переливання між бутилками потрібно вибрати бутилку,а потім відповідну стрілку.Щоб вилити воду з бутилки виберіть потрібну бутилку та стрілку яка вказазую в сторону джерела</h1>
+	</div>
+
+	<div class="game-back" id="game-back">
+		
+		<div id="all_water">
+
+			<img src="/images/games/lake.png" class="lake" height="200px" >
+		</div>
+
+		<div id="top_controls">
+			<a  id="to_left" onclick="toLeft()"><img src="/images/games/in.png" ></a>
+			<a  id="to_right"  onclick="toRight()"><img src="/images/games/in2.png" ></a>
+		</div>
+		
+		<div id="bottles">
+			<div id="fiveliters" ">
+				<img src="/images/games/bottle_five.png" width="100px" height="100px" onclick="fiveSelected()">
+				<span id="five_title" style="display: block">0 liters</span>
+			</div>
+
+			<div id="center_controls">
+				<div id="left_to_right" style="display: none;">
+					<a  class="transfer_btn" onclick="rightToOut()"><img src="/images/games/out.png"></a>
+					<a  class="transfer_btn" onclick="rightToLeft()"><img src="/images/games/right_arrow.png"></a>
+					<a  class="transfer_btn" onclick="cancelTransfer()">Cancel</a>
+				</div>
+
+				<div id="right_to_left" style="display: none;">
+					<a  class="transfer_btn" onclick="leftToOut()"><img src="/images/games/out2.png" ></a>
+					<a  class="transfer_btn" onclick="leftToRight()"><img src="/images/games/right_arrow.png" class="revert"></a>
+					<a  class="transfer_btn" onclick="cancelTransfer()">Cancel</a>
+				</div>
+			</div>
+			<div id="threeliters">
+				<img src="/images/games/bottle_three.png" width="100px" height="100px" onclick="threeSelected()">
+				<span id="three_title" style="display: block">0 liters</span>
+			</div>
+		</div>
+
+	</div>
+
+</div>

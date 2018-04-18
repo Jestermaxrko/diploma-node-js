@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
+</head>
+<body>
+
+
+	<div class="container">
+		
+		<%if(user) {%>
+
+			<div class="main">
+				<div class="profile">
+					<div class="img-div">
+						<img src="/images/user.png" class="profile-img">
+					</div>
+					<div class="information">
+
+						<%if(user.admin){%>
+							<span class="profile-info admin">Адміністратор</span>
+						<%}%>
+
+						<span class="profile-info">id: <%=user._id%></span>
+						<span class="profile-info"><%=user.firstname%> <%=user.lastname%></span>
+						<span class="profile-info"><%=user.email%></span>
+						<a href="/logout" id="logout-btn">Вийти</a>
+					</div>
+
+					
+				</div>
+
+				<div class="tests">
+
+					<div class="header">
+						<nav>
+							<ul>
+								<li>
+									<a class="home-link text" href="/"></a>
+								</li>
+
+								<%if(user.admin){%>
+									<li>
+										<a class="text" href="/admin-page" >Адміністрування</a>
+									</li>
+								<%}%>
+				
+								<li>
+									<a class="text" href="/tests">Усі тести</a>
+								</li>
+							</ul>
+						</nav>
+
+						
+						
+						
+					</div>
+
+					<div class="tests-field">
+						<%if(tests.length){%>
+							<h2>Пройдені тести (<%=tests.length%>)</h2>
+							<ul class="tests-list">
+								<%for(var i = 0; i< tests.length; i++){%>
+									<li class="item">  
+										
+										<a class="res-link" href="/results/<%=tests[i].id%>">
+											<img  class="logo" src="images/logo/<%=tests[i].img%>" width="40px;"><%=tests[i].name%>
+										</a>
+									</li>
+								<%}%>
+							</ul>
+						<%}else{%>
+							<div class="empty">
+								<h1>Ви ще не пройшли жодного тесту</h1>
+								<a href="/tests"> Розпочати</a>
+							</div>
+						<%}%>
+					</div>
+					
+					
+				</div>
+			</div>
+		<%}else{%>
+			<div class="error-div">
+				<img src="/images/access_error.png" width="200px">
+				<h1 class="error-message">Увійдіть щоб переглянути цю сторінку</h1>
+				<a href="/login/">Увійти</a>
+			</div>
+		<%}%>
+
+	</div>
+
+
+	
+</body>
+</html>

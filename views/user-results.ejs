@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/user-results.css">
+	<script defer type="text/javascript" src="/javascripts/user-results.js"></script>
+</head>
+<body>
+	<div class="container">
+		<%-include partials/header.ejs%>
+		<%-include partials/time_converter.ejs %>
+		<div class="res-page">
+				
+			<%if(test.results.length){%>
+
+				<div class="head-div">
+					<img class="logo" src="/images/logo/<%=test.img%>"><h1><%=test.name%></h1>
+					<div class="custom-select" style="width:20%;">
+						  <select onchange="sortResults(this.value)">
+							  	<option value="0">Сорутвати за:</option>
+							    <option value="points">Очки</option>
+						       	<option value="time" >Час</option>
+						        <option value="tries">Спроби</option>
+						        <script >
+						        	var condition = "<%=condition%>";
+						        	var options = document.getElementsByTagName("option");
+						        	for(var i = 0 ;i < options.length; i++){
+						        		console.log(options[i].value);
+						        		if(options[i].value==condition){
+						        			options[i].selected = "selected";break;
+						        		}
+						        	}
+						        </script>
+						  </select>
+						</div>
+					</div>
+
+				<table id="base-table" class="res-table">
+					<tr class="base-table-th">
+						<th>Користувач</th>
+						<th>Час</th>
+						<th>Спроби</th>
+						<th>Очки</th>
+					</tr>
+
+				<%for(var i=0;i<test.results.length;i++){%>
+						
+					<tr class="summary-row" onclick="showDetail(this)">
+						<td><%=test.results[i].user.firstname%> <%=test.results[i].user.lastname%></td>
+						<td><%=getTimeString(test.results[i].test_res.time)%></td>
+						<td><%=test.results[i].test_res.tries%></td>
+						<td><%=test.results[i].test_res.points%></td>
+					</tr>
+
+					<tr style="display: none" class="detail-tr">
+						<td colspan="4">
+							<table class="detail-table">
+								<tr>
+									
+									<th>Гра</th>
+									<th>Час</th>
+									<th>Спроби</th>
+									<th>Відповідь</th>
+									
+								</tr>
+								<%for(var j=0;j<test.results[i].test_res.games.length;j++){%>
+									<tr>
+										
+										<td><%=test.results[i].test_res.games[j].name%></td>
+										<td><%=getTimeString(test.results[i].test_res.games[j].time)%></td>
+										<td><%=test.results[i].test_res.games[j].tries%></td>
+
+										<%if(test.results[i].test_res.games[j].answer){%>
+											<td class="true-td"></td>
+										<%}else{%>
+											<td class="false-td"></td>
+										<%}%>	
+									</tr>
+								<%}%>
+							</table>
+						</td>
+					</tr>
+					
+
+				<%}%>
+
+				</table>
+			<%}else{%>
+
+				<div class="empty">
+					<img src="/images/empty.png" width="20%">
+					<h1>Ніхто ще не пройшов цей тест</h1>
+					<a href="/admin-page/test-results">Назад</a>
+				</div>
+
+			<%}%>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var x, i, j, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+for (i = 0; i < x.length; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < selElmnt.length; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var i, s, h;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < s.length; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            sortResults(s.options[s.selectedIndex].value);
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+  });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  for (i = 0; i < y.length; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < x.length; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+	</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TestPage</title>
+	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/testing.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/testPage.css">
+</head>
+<body>
+
+	<div id="inner-scripts">
+		
+	</div>
+
+
+
+
+	<div class="container">
+
+		<div class="main" id="main">
+
+			<div id="task-page" style="display: none">
+				<div class="task-header">
+					<input type="button" id="pass-btn" name="pass-btn" value="Пропустити" onclick="passQuestion()">
+					<div id="task-location"> </div>
+				</div>
+				
+			</div>
+
+			<div id="start-page">
+				<div class="rules">
+					<h2> Правила</h2>
+					<ul class="rules-ul">
+						<li>У вас є ОДНА сроба для проходження тесту.</li>
+						<li>Якщо ви відкриєте нову вкладку,вікно або сторонню програму тест буде вважатись проваленим а всі результатити анульованими.</li>
+						<li>Якщо обновите сторінку після початку тесту - тест буде вважатись проваленим а всі результатити анульованими</li>
+						<li>Тестові завдання перемикаються автоматично після надання правильної відповіді або після натиснення клавіші <strong>"Пропустити"</strong></li>
+					</ul>
+					<p>Для початку тестування натисніть <strong>"Старт"</strong>	</p>
+				</div>
+				
+				<div class="start-div">
+					<input type="button" name="start-btn" id="start-btn" value="Старт" onclick="startTest()">
+				</div>
+			</div>
+
+			<div id="res-page" style="display: none;">
+				<table id="res-table">
+					<tr>
+						<th>Гра</th>
+						<th>Час</th>
+						<th>Спроби</th>
+						<th>Відповідь</th>
+					</tr>
+				</table>
+			</div>
+
+			
+		</div>
+		<div class="right-panel" id="right-panel">
+			<div class="test-progress">
+				<div class="timer-div">
+					<div class="tool-box">
+						<input type="button" name="timer-btn" id="timer-btn" >
+					</div>
+					<div class="timer">
+						<img class="timer-img" src="/images/timer.png"> <span id="timer-time">00:00:00</span>
+					</div>
+				</div>
+				<div class="list-div" id="list-div"> 
+					<ul class="games-list" id="games-list">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</body>
+
+</html>

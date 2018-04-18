@@ -1,0 +1,37 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.image{
+	background:url("/images/back_admin.jpg");
+	height: 400px;
+	position: relative;
+}
+
+#admin_page{
+	border-bottom: 2px solid #36e2dd;
+}
+
+
+#home_page p{
+	color: #04133e;
+	float: right;	
+	margin-top: 250px;
+	padding:10px 5px;
+	font-size:1.2em;
+	font-weight: bold;
+	font-family: 'Montserrat', sans-serif;
+	background-color: rgba(255,255,255,.9);
+
+	 /*background: linear-gradient(to right,rgba(255,255,255,.7), rgba(255,255,255,.0));*/
+
+}
+
+body{
+	background-color: #eee;
+}
+
+
+.error-div{
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+}

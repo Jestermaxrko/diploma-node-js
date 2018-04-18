@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AAA</title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/create-test.css">
+	<script defer type="text/javascript" src="/javascripts/create-test.js"></script>
+</head>
+<body>
+
+	<div class="container">
+		<%- include partials/header.ejs%>
+
+		<div class="create-page">
+			
+			<div class="description-div">
+
+				<div class="editor">
+					<div class="editor-block">
+						<label>Назва</label>
+						<input type="text" name="name" id="test-name" class="text-field" onkeyup="loadTittle(this.value)">
+					</div>
+					<div class="editor-block">
+						<label>Лого</label>
+						<input type="file" name="logo" id="file-logo" accept="image/*" onchange="loadImage()">
+					</div>
+						<div class="editor-block">
+						<label>Опис</label>
+						<div class="tool_box">
+							<input type="button" name="" class="tag_btn" tabindex="-1" id="p_btn" value="" onclick="addTag('p')">
+							<input type="button" name="" class="tag_btn" tabindex="-1" id="i_btn" value="" onclick="addTag('i')">
+							<input type="button" name="" class="tag_btn" tabindex="-1" id="s_btn" value="" onclick="addTag('b')">
+							<span >* Ви можете включати і інші html теги</span>
+						</div>
+						<textarea rows="10" cols="45" name="text"  class="text-field" id="desc"  onkeyup="loadDescription(this.value)"></textarea>
+					</div>
+
+					<div class="editor-block">
+
+						<label id="game-lbl">Ігри (0)</label>
+
+						<ul class="all_games_list">
+							<%for(var i=0;i<games.length;i++){%>
+
+								<li>
+									<div class="game-div">
+										<div class="game-name">
+											<a onclick="showCondition(this)" class="inline-block"> <%=games[i].name%> </a
+											><input type="button" class="add_btn inline-block" id=" <%=games[i]._id%>" onclick="addGame(this)">
+										</div>
+
+										<div class="game-desc" style="display: none">
+											<%=games[i].condition%>
+										</div>
+									</div>
+								</li>
+
+							<%}%>
+						</ul>
+					</div>
+				</div>
+
+				<div class="preview" id="preview">
+					<h2>Попередній перегляд</h2>
+					<div class="field">
+							<h3 class="field_name" id="field-title"><Назва></h3>
+							<img src="/images/logo/default-logo.png" class="display_inline logo" id="test-logo" width="100px" height="100px">
+							<div class="info display_inline">
+								<p class="description" id="description">
+								<Опис>
+								</p>
+
+							</div>
+						</div>
+					<div class="save-div">
+						<input type="button" value="Зберегти" id="save-btn" onclick="saveTest()">
+					</div>
+					<div class="error-div">
+						<span id="error-text" style="display: none"></span>
+					</div>
+
+				</div>
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+
+
+</body>
+</html>

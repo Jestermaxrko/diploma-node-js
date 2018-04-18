@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+.res-page{
+	background-color: white;
+}
+
+
+#test-results{
+	border-bottom: 2px solid #36e2dd;
+}
+
+
+.head-div{
+	text-align: center;	
+	vertical-align: middle;
+	position: relative;
+	font-family: 'Montserrat', sans-serif;
+	padding: 5px 0;
+}
+
+.logo{
+	width: 40px;
+	vertical-align: middle;
+}
+
+.head-div h1{
+	vertical-align: middle;
+	display: inline;
+	margin-left: 5px;
+}
+
+
+/*----------------------------------------------------------------------------*/
+
+.custom-select {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 7px;
+  margin-right: 5px;
+  font-family: Arial;
+}
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+.select-selected {
+  background-color: #4cd4c0;
+}
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: #4cd4c0;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+.select-items div:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/*----------------------------------------------------------------------------------*/
+.res-table{
+	font-family: 'Montserrat', sans-serif;
+	width: 100%;
+	border-collapse: collapse;
+	text-align: center;
+	background-color: #f7fffe;
+}
+
+.base-table-th{
+	background-color: #cff5d0;
+}
+.base-table-th th, .summary-row td{
+	padding: 10px;
+}
+
+.summary-row{
+	border-bottom: 1px solid #cff5d0;
+}
+
+.summary-row td:last-child{
+	/*background-color: #fdebeb;*/
+}
+
+.summary-row:hover{
+	background-color: #eee;
+	cursor: pointer;
+}
+
+.detail-tr{
+	border-bottom: 1px solid #cff5d0;
+	font-size: small;
+	background-color: #f7fffe;
+	color:#6a2686;
+}
+
+.detail-table{
+	/*background-color: red;*/
+	width: 50%;
+	text-align: center;
+	margin-left: 1px;
+	margin: auto;
+}
+
+.true-td{
+	background:url("/images/yes.png") no-repeat center;
+	background-size: 18px;
+}
+
+.false-td{
+	background:url("/images/no.png") no-repeat center;
+	background-size: 18px;
+}
+
+.empty{
+	text-align: center;
+	background-color: white;
+	font-family: 'Montserrat', sans-serif;
+	padding: 20px;
+
+}
+
+.empty h1{
+	margin:0;
+	padding: 10px;
+}

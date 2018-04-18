@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2');
+
+body{
+	
+	background-color: #3b4663;
+	background: -moz-linear-gradient(left, #7720a0 0%, #207cca 51%, #7720a0 100%); 
+	background: -webkit-linear-gradient(left, #7720a0 0%,#207cca 51%,#7720a0 100%); 
+	background: linear-gradient(to right, #7720a0 0%,#207cca 51%,#7720a0 100%); 
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7720a0', endColorstr='#7720a0',GradientType=1 ); 
+	font-family: 'Exo 2', sans-serif;
+}
+
+
+
+
+.container{
+	
+	width: 50%;
+	margin: auto;
+	background-color: white;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.head{
+	display: flex;
+	padding: 10px 10px;
+	border-bottom: 1px solid #ccc;
+}
+.left, .right{
+	width: 50%;
+	vertical-align: middle;
+}
+.right{
+	text-align: right;
+}
+
+#all-tests{
+	line-height: 50px;
+}
+.date{
+	margin:10px 0;
+	font-weight: normal;
+	font-size: 1rem;
+	padding-left: 10px;
+}
+
+.logo{
+	vertical-align: middle;
+	height: 50px;
+}
+.title{
+	vertical-align: middle;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	
+}
+
+.result-page{
+	border-radius: 10px; 	
+}
+
+
+#res-table{
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+#res-table tr:first-child{
+	background-color: #8ac9ff;
+	color: #3f3f3f;
+}
+
+#res-table tr{
+	border-bottom: 1px solid #ccc;
+}
+
+#res-table tr:last-child{
+	border: none;
+}
+
+#res-table td{
+	width: 25%;
+	padding: 15px 0;
+
+}
+
+.right-answer{
+	background:url(/images/yes.png) no-repeat center;
+	
+}
+
+.wrong-answer{width: 50px;
+	background:url(/images/no.png) no-repeat center;
+	
+}

@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans');
+body{ 
+    background-color: #3b4663;background: -moz-linear-gradient(left, #7720a0 0%, #207cca 51%, #7720a0 100%); 
+    background: -webkit-linear-gradient(left, #7720a0 0%,#207cca 51%,#7720a0 100%); 
+    background: linear-gradient(to right, #7720a0 0%,#207cca 51%,#7720a0 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7720a0', endColorstr='#7720a0',GradientType=1 ); 
+}
+
+.container{
+    width: 70%;
+    margin: auto; 
+}
+
+header{
+	font-family: 'Alegreya Sans', sans-serif;
+	font-weight: bold;
+	font-size: 1.25em;
+}
+
+header ul {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+header ul li {
+	 float: left;
+	 box-sizing: border-box;
+}
+
+header ul li a {
+	display: block;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;  
+    transition: background-color 0.5s;
+    height: 40px;
+    line-height: 40px;
+    padding: 20px 30px;
+    border-bottom: 2px solid #333;
+}
+
+header ul li a:hover {
+    background-color: #111;
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}
+
+header img{
+
+    height: 50px;
+    object-fit: contain;
+}

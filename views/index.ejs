@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Start Page</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/start_page.css">
+	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="/javascripts/index.js"></script>
+</head>
+
+<body>
+	
+	<%if(user){%>
+
+			<div class="user">
+				<a href="/profile" id="profile-link"><%=user.firstname%> <%=user.lastname%><img src="/images/person.png" width="30px;"></a>
+			</div>
+		<%}%>	
+
+	<div class="container">
+
+		
+
+	 	<div class="main">
+	 		<h1>Всього <strong>3</strong> кроки</h1>
+	 		<div class="columns">
+		 		<div class="register_div column" >  
+		 			<h2><a href="/register" target="_blank">Крок 1:Реєстрація</a></h2>
+		 			<a href="/register" target="_blank"><img src="/images/register_big.png"> </a>
+		 		</div>
+		 		<div class="login_div column">    
+		 			<h2><a href="/login" target="_blank">Крок 2:Вхід</a></h2>
+		 			<a href="/login" target="_blank"><img src="/images/login_big.png"> </a>
+		 		</div>
+		 		<div class="choose_div column">
+		 			<h2><a href="/tests" target="_blank">Крок 3:Вибір тестування</a></h2>
+		 			<a href="/tests" target="_blank"><img src="/images/choose.png"> </a>
+		 		</div>
+		 	</div>
+	 	</div>
+	 </div>
+</body>
+
+</html>

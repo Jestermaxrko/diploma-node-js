@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/tests.css">
+
+</head>
+<body>
+
+	<div class="container">
+	
+
+		<header >	
+			<h1>Vacancies</h1>
+			<p>We are waiting for you</p>
+
+		</header>
+
+		<div class="main">
+
+
+				<% if(tests){%>
+					<div class="fields">
+					<%for(var i=0;i<tests.length;i++){%>
+
+						<div class="field">
+							<h2 class="field_name"><%=tests[i].name%></h2>
+							<img src="/images/logo/<%=tests[i].img%>" class="display_inline logo" width="100px" height="100px">
+							<div class="info display_inline">
+								<p class="description">
+								<%=tests[i].description%>
+								</p>
+								
+								<div class="link">
+									<a href="tests/<%=tests[i]._id%>" class="start_btn" target="_blank" id="id">Пройти тестування</a>
+								</div>
+							</div>
+						</div>
+
+					<%}%>
+					</div>
+				<%}%>
+		</div>
+
+	</div>
+</body>
+</html>

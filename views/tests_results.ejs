@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/test-results.css">
+</head>
+<body>
+	<div class="container">
+		<%- include partials/header.ejs%>
+		<div class="all-tests">
+
+			<table class="tests-table">
+				<tr>
+					
+
+					<th colspan="2">
+						<form action="/searchTest" method="post">
+							<input type="text" name="search" id="search" placeholder="Search" value="<%=search%>">
+							<input type="submit" name="search_btn" value=" " id="search_btn">
+
+							<%if(!tests.length){%>
+								<div class="error_div">
+									<span class="erorr">За вашим запитом нічого не знайдено.</span>
+									<a href="/admin-page/test-results">Назад</a>
+								</div>
+							<%}%>
+						</form>
+					</th>
+					<%if(tests.length){%>
+						<th class="person-head">
+							
+						</th>
+					<%}%>
+				</tr>
+
+			<%for(var i=0;i<tests.length;i++){%>
+
+				<tr>
+					<td class="fixed-width"><img class="logo" src="/images/logo/<%=tests[i].img%>"></td>
+
+					<td><a class="res-link" href="/admin-page/result/<%=tests[i]._id%>"><%=tests[i].name%></a></td>
+					<td class="person-td"><%=i*1000%>
+					
+				</tr>
+
+
+			<%}%>
+			</table>
+		</div>
+
+	</div>
+
+	<script> </script>
+</body>
+</html>
