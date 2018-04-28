@@ -75,6 +75,23 @@ input{
 
 }
 
+.inline{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.rules-title{
+	text-align: center;
+}
+
+#test-name{
+	margin: 0;
+}
+
+#test-logo{
+	margin-right: 5px;
+}
+
 .rules{
 	width: 50%;
 	margin: auto;
@@ -118,47 +135,6 @@ input{
 	color: #5c3de8;
 	cursor: pointer;
 }
-
-/*----------------------RESULTS PAGE----------------------------*/
-
-
-#res-page{
-	text-align: center;
-}
-
-#res-table{
-	width: 100%;
-	border-collapse: collapse;
-}
-
-#res-table tr:first-child{
-	background-color: #8ac9ff;
-	color: #3f3f3f;
-}
-
-#res-table tr:nth-child(2n){
-	background-color: #efefef;
-}
-
-#res-table tr:last-child{
-	font-weight: bold; 
-}
-
-#res-table td{
-	width: 25%;
-	padding: 15px 0;
-}
-
-.right-answer{
-	background:url(/images/yes.png) no-repeat center;
-	
-}
-
-.wrong-answer{width: 50px;
-	background:url(/images/no.png) no-repeat center;
-	
-}
-
 
 
 /*-------------------------RIGHT PANEL--------------------------*/
@@ -231,3 +207,43 @@ input{
 	padding-left: 40px;
 
 }
+
+.not-active{
+	text-align: center;
+	display: block;
+	width: 100%;
+}
+
+.not-active  a{
+	font-size: 1.5em;
+}
+
+@media only screen and (max-width: 900px){
+
+
+	.container , .main{
+		display: block;
+		width: 100%;
+	}
+
+	.right-panel{
+		display: none;
+	}
+
+	.rules{
+		width: 100%;
+		box-sizing: border-box;
+		margin: auto;
+	}
+
+
+	#task-page{
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	#test-logo{
+		display: none;
+	}
+
+} 

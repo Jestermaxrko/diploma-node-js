@@ -95,3 +95,20 @@ body{
 	background:url(/images/no.png) no-repeat center;
 	
 }
+
+
+@media only screen and (max-width: 900px){
+
+
+	.container {
+		display: block;
+		width: 100%;
+	}
+
+	body{
+		padding: 0;
+		margin: 0;
+	}
+
+	
+}

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AAA</title>
+	<title>Нове тестування</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/create-test.css">
 	<script defer type="text/javascript" src="/javascripts/create-test.js"></script>
 </head>
@@ -22,6 +23,7 @@
 					<div class="editor-block">
 						<label>Лого</label>
 						<input type="file" name="logo" id="file-logo" accept="image/*" onchange="loadImage()">
+						<span id="file-size" style="visibility: hidden;">Файл не вибрано</span>
 					</div>
 						<div class="editor-block">
 						<label>Опис</label>
@@ -37,6 +39,19 @@
 					<div class="editor-block">
 
 						<label id="game-lbl">Ігри (0)</label>
+
+						<div class="generator">
+							<div class="gen-title">
+								<span onclick="showGenerator()">
+									Автозаповнення <img id="arrow" src="/images/arrow_bottom.png" width="15px">
+								</span>
+							</div>
+							<div class="gen-body" id="gen-body" style="display: none;">
+								<span>Кількість ігр</span>
+								<input type="number" name="" min="1" max="<%=games.length%>" value="1" onpaste="return false" id="games-size">
+								<input type="button" name="" value="Генерувати" onclick="createRandomGameList()">
+							</div>
+						</div>
 
 						<ul class="all_games_list">
 							<%for(var i=0;i<games.length;i++){%>
@@ -70,10 +85,12 @@
 								</p>
 
 							</div>
-						</div>
+					</div>
+					
 					<div class="save-div">
 						<input type="button" value="Зберегти" id="save-btn" onclick="saveTest()">
 					</div>
+					
 					<div class="error-div">
 						<span id="error-text" style="display: none"></span>
 					</div>

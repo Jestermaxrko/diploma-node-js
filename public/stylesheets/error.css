@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+body{
+	background-color: #eee;
+
+}
+
+.err-div{
+	font-family: 'Montserrat', sans-serif;
+	text-align: center;
+	margin-top: 5%; 
+	box-sizing: border-box;
+	text-transform: uppercase;
+}
+
+
+.status{
+
+	color:#ffc342;
+	font-size: 5em;
+	margin: 0;
+	font-family: 'Roboto Condensed', sans-serif;
+}

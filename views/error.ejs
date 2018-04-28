@@ -1,6 +1,18 @@
-extends layout
 
-block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%=status%> <%=message%></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/error.css">
+</head>
+<body>
+
+	<div class="err-div">
+		<img src="/images/err.png" width="30%">
+		<h1 class="status"><%=status%></h1>
+		<h1><%=message%></h1>
+	</div>
+</body>
+</html>

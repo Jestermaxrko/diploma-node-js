@@ -1,4 +1,5 @@
 var games = [];
+var gen_is_on = false;
 
 function addTag(tag){
 	var text_area = document.getElementById("desc");
@@ -50,24 +51,28 @@ function loadTittle(text){
 }
 
 function loadImage() {
-  var preview = document.getElementById('test-logo');
-  var file    = document.getElementById('file-logo').files[0];
-  var reader  = new FileReader();
+  	var preview = document.getElementById('test-logo');
+  	var file    = document.getElementById('file-logo').files[0];
+	var reader  = new FileReader();
 
-  reader.onloadend = function () {
-    preview.src = reader.result;
-  }
-
+  	reader.onloadend = function () {
+    	preview.src = reader.result;
+  	}
+  	var file_size_span = document.getElementById("file-size");
+	
 	if (file) {
-		if(file.size>100000000000000){
-	  		alert("FALSSEE");
+		if(file.size>1000000){
+			preview.src = "/images/logo/default-logo.png";
+	  		file_size_span.innerHTML =" *Розмір файлу перевищує 1 мегабайт";
 	  	}
 	    else{
+	    	file_size_span.innerHTML =  "Розмір файлу: " + file.size/1024 + "Kb";
 	    	reader.readAsDataURL(file);
 	    }
-	    
+	    file_size_span.style.visibility = "visible";
 	}else{
 	    preview.src = "/images/logo/default-logo.png";
+		file_size_span.style.visibility = "";
 	}
 }
 
@@ -103,6 +108,53 @@ function addGame(elem){
 	document.getElementById("game-lbl").innerHTML = "Ігри (" + games.length +")";
 }
 
+function showGenerator(){
+
+	var generator = document.getElementById("gen-body");
+	var img = document.getElementById("arrow");
+
+	if(gen_is_on){
+		generator.style.display = "none";
+		img.src = "/images/arrow_bottom.png"
+		gen_is_on = false;
+	}else{
+		generator.style.display = "";
+		img.src = "/images/arrow_top.png"
+		gen_is_on = true;
+	}
+
+}
+
+function createRandomGameList(){
+	var size = document.getElementById("games-size").value;
+	var elems = document.getElementsByClassName("add_btn");
+	games = [];
+	elems.forEach = [].forEach;
+	elems.forEach(function(elem){
+		elem.style.background= "url(/images/plus_white.png";
+		elem.style.backgroundRepeat= "no-repeat";
+		elem.style.backgroundPosition= "center";
+	});
+
+	if(size>elems.length){
+		document.getElementById("games-size").value = elems.length;
+		elems.forEach(function(elem){
+			addGame(elem);
+		})
+	}else{
+		if(size<1){
+			size =1;
+			document.getElementById("games-size").value = size;
+		}
+		while(games.length<size){
+			var index = Math.floor((Math.random() * elems.length));
+			addGame(elems[index]);
+		}
+	}
+
+	console.log(games);
+}
+
 function saveTest(){
 
 	var name = document.getElementById("test-name").value;
@@ -115,9 +167,7 @@ function saveTest(){
 			error_span.innerHTML = "*Ви не вибрали жодного завдання";
 			error_span.style.display="";
 		}else{
-			
 			postTest(name, desc);
-
 		}
 
 	}else{
@@ -163,7 +213,7 @@ function postTest(name, desc){
   	imgBase64: dataURL
   },
   	success: function(response) {
-  		console.log("YES");
+  		location.replace("/admin-page/test-overview/"+response);
   	},
   	error: function(xhr) {
     	console.log("Errror");

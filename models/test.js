@@ -13,6 +13,12 @@ var TestSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  active: {
+    type: Boolean,
+    unique: false,
+    required: true
+  }
+  ,
    img: {
     type: String,
     unique: false,

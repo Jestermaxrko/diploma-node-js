@@ -7,6 +7,49 @@ var timer;
 var results =[];
 var full_results = {};
 
+/*window.addEventListener('devtoolschange', function (e) {
+
+
+		if(e.detail.open){
+			results = [];
+			full_results = {};
+			for(var i=0;i<current_games.length;i++){
+
+				var one_res = {
+					name: current_games[i].game.name,
+					time: 100000000,
+					tries: 100000000,
+					answer: false
+				}	
+				results.push(one_res);
+			}
+
+			console.log(results);
+
+			full_results = {
+				games: results,
+				points: -1,
+				tries: 100000000,
+				time: 100000000,
+			}
+
+			postResults();
+		}
+});*/
+
+window.onbeforeunload = function (e){
+
+	if(current_game_index!=-1){
+		e = e || window.event;
+	    // For IE and Firefox prior to version 4
+	    if (e) {
+	        e.returnValue = 'Результати тестування будуть анульованими, вийти?';
+	    }
+	    // For Safari
+	    return 'Результати тестування будуть анульованими, вийти??';
+    }
+
+}
 
 window.onload = function(){
 
@@ -17,6 +60,8 @@ $.ajax({
   success: function(response) {
 
   	if(response){
+  		document.getElementById("test-name").innerHTML = response.name;
+  		document.getElementById("test-logo").src = "/images/logo/" + response.img;
   		current_games = response.games;
       	createGamesPanel();
     }else{
@@ -31,7 +76,7 @@ $.ajax({
 }
 
 function createGamesPanel(){
-
+ 
 	console.log(current_games);
 	var games_list = document.getElementById("games-list");
 

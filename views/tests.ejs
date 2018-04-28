@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Тести</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/tests.css">
 
@@ -14,7 +14,6 @@
 		<header >	
 			<h1>Vacancies</h1>
 			<p>We are waiting for you</p>
-
 		</header>
 
 		<div class="main">
@@ -32,9 +31,15 @@
 								<%=tests[i].description%>
 								</p>
 								
-								<div class="link">
-									<a href="tests/<%=tests[i]._id%>" class="start_btn" target="_blank" id="id">Пройти тестування</a>
-								</div>
+								<%if(tests[i].active){%>
+									<div class="link">
+										<a href="/tests/<%=tests[i]._id%>" class="start_btn" target="_blank" id="id">Пройти тестування</a>
+									</div>
+								<%}else{%>
+									<div class="close">
+										<span>Тестування закрито</span>
+									</div>
+								<%}%>
 							</div>
 						</div>
 

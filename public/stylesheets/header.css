@@ -9,6 +9,7 @@ body{
 .container{
     width: 70%;
     margin: auto; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 header{
@@ -54,3 +55,92 @@ header img{
     height: 50px;
     object-fit: contain;
 }
+
+
+
+.mobile-menu{
+    background-color: #333;
+}
+
+.top{
+    overflow: hidden;
+}
+
+.menu-btn{
+    float: right;
+    margin: 2px;
+    background: url("/images/menu.png") no-repeat center;
+    width: 40px;
+    height: 40px;
+    background-size: 40px;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.menu-btn:hover{
+     transform: rotate(-5deg);
+}
+
+
+.menu{
+    font-family: 'Alegreya Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    
+}
+
+.menu li a{
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.menu li a:hover{
+    background-color: black;
+}
+
+.mobile-menu{
+    display: none;
+}
+
+
+@media only screen and (max-width: 800px){
+
+
+    .container {
+        display: block;
+        width: 100%;
+    }
+
+} 
+
+
+@media only screen and (max-width: 550px){
+
+
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        display: block;
+        width: 100%;
+    }
+
+    header  {
+     display: none;
+    }
+
+    .mobile-menu{
+        display: block;
+    }
+
+
+} 

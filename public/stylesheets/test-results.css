@@ -37,7 +37,7 @@
 	border:2px solid #c679f9;
 	transition: width .5s;
 	padding-right: 50px;
-	width: 30%;
+	width: 80%;
 	box-sizing: border-box;
 }
 
@@ -60,10 +60,23 @@
 	opacity: 0.7;
 }
 
+
 .error_div{
+	text-align: center;
 	font-size: small;
 	display: inline;
 	padding: 5px;
+}
+
+.error_div a{
+	text-align: center;
+	display: block;
+	font-size: 1.25em;
+}
+
+strong{
+	color: red;
+	text-transform: uppercase;
 }
 
 .tests-table th{
@@ -79,6 +92,7 @@
 .tests-table td{
 	border-bottom: 1px solid #ccc;
 	padding: 5px;
+	box-sizing: border-box;
 }
 
 .res-link{
@@ -104,3 +118,19 @@
 .tests-table tr:nth-child(even) {
 	/*background-color: #f2f2f2;*/
 }
+
+
+@media only screen and (max-width: 800px){
+
+	.tests-table{
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.tests-table td{
+		padding: 5px 2px;
+		box-sizing: border-box;
+	}
+  
+
+} 

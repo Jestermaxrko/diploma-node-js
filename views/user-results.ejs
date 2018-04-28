@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Результати</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/user-results.css">
 	<script defer type="text/javascript" src="/javascripts/user-results.js"></script>
 </head>
@@ -11,89 +12,154 @@
 		<%-include partials/time_converter.ejs %>
 		<div class="res-page">
 				
-			<%if(test.results.length){%>
 
-				<div class="head-div">
-					<img class="logo" src="/images/logo/<%=test.img%>"><h1><%=test.name%></h1>
-					<div class="custom-select" style="width:20%;">
-						  <select onchange="sortResults(this.value)">
-							  	<option value="0">Сорутвати за:</option>
-							    <option value="points">Очки</option>
-						       	<option value="time" >Час</option>
-						        <option value="tries">Спроби</option>
-						        <script >
-						        	var condition = "<%=condition%>";
-						        	var options = document.getElementsByTagName("option");
-						        	for(var i = 0 ;i < options.length; i++){
-						        		console.log(options[i].value);
-						        		if(options[i].value==condition){
-						        			options[i].selected = "selected";break;
-						        		}
-						        	}
-						        </script>
-						  </select>
-						</div>
+				<div class="test-info">
+
+					<div id="display-name">
+						<h1 id="test-name"><%=test.name%></h1>
+						<input type="button" name="change-name" id="edit-btn">
 					</div>
 
-				<table id="base-table" class="res-table">
-					<tr class="base-table-th">
-						<th>Користувач</th>
-						<th>Час</th>
-						<th>Спроби</th>
-						<th>Очки</th>
-					</tr>
+					<div id="edit-name" style="display: none;">
+						<div class="edit-title">
+							<span>Редагування</span>
+							<input type="button" name="" value="X" id="close-editor-btn">
+						</div>
+						<input type="text" placeholder="Нове імя" id="new-name">
+						<input type="button" value="Зберегти" id="save-btn">
+					</div>
 
-				<%for(var i=0;i<test.results.length;i++){%>
-						
-					<tr class="summary-row" onclick="showDetail(this)">
-						<td><%=test.results[i].user.firstname%> <%=test.results[i].user.lastname%></td>
-						<td><%=getTimeString(test.results[i].test_res.time)%></td>
-						<td><%=test.results[i].test_res.tries%></td>
-						<td><%=test.results[i].test_res.points%></td>
-					</tr>
-
-					<tr style="display: none" class="detail-tr">
-						<td colspan="4">
-							<table class="detail-table">
-								<tr>
-									
-									<th>Гра</th>
-									<th>Час</th>
-									<th>Спроби</th>
-									<th>Відповідь</th>
-									
-								</tr>
-								<%for(var j=0;j<test.results[i].test_res.games.length;j++){%>
-									<tr>
-										
-										<td><%=test.results[i].test_res.games[j].name%></td>
-										<td><%=getTimeString(test.results[i].test_res.games[j].time)%></td>
-										<td><%=test.results[i].test_res.games[j].tries%></td>
-
-										<%if(test.results[i].test_res.games[j].answer){%>
-											<td class="true-td"></td>
-										<%}else{%>
-											<td class="false-td"></td>
-										<%}%>	
-									</tr>
-								<%}%>
-							</table>
-						</td>
-					</tr>
+					<img class="logo" src="/images/logo/<%=test.img%>">
 					
+					<div class="active-div">
+						<label>Активне<input id="checkBox" type="checkbox"
+						<%if(test.active){%> checked="checked" <%}%> ></label>
+						
+					</div>
 
-				<%}%>
+					<div class="buttons">
+						<input type="button" id="clear-btn"  value="Очистити результати">
+						<input type="button" id="delete-btn" value="Видалити тестування">
+					</div>
 
-				</table>
-			<%}else{%>
+					<div id="accept-block" style="display: none;">
+						<span id="accept-message"></span><br>
+						<div class="accept-btns">
+							<input type="button" name="yes" value="Так" id="yes-btn">
+							<input type="button" name="no" value="Ні" id="no-btn">
+						</div>
 
-				<div class="empty">
-					<img src="/images/empty.png" width="20%">
-					<h1>Ніхто ще не пройшов цей тест</h1>
-					<a href="/admin-page/test-results">Назад</a>
+					</div>
+
 				</div>
 
-			<%}%>
+				<div class="test-res-div">
+					<%if(test.results.length){%>
+						<div class="head-div">
+							<h1>Результати</h1>
+							<div class="custom-select" style="width:20%;">
+								  <select onchange="sortResults(this.value)">
+									  	<option value="0">Сорутвати за:</option>
+									    <option value="points">Очки</option>
+								       	<option value="time" >Час</option>
+								        <option value="tries">Спроби</option>
+								        <script >
+								        	var condition = "<%=condition%>";
+								        	var options = document.getElementsByTagName("option");
+								        	for(var i = 0 ;i < options.length; i++){
+								        		console.log(options[i].value);
+								        		if(options[i].value==condition){
+								        			options[i].selected = "selected";break;
+								        		}
+								        	}
+								        </script>
+								  </select>
+								</div>
+							</div>
+							
+							<div class="table-div">
+								<table id="base-table" class="res-table">
+									<tr class="base-table-th">
+										<th>Користувач</th>
+										<th>Час</th>
+										<th>Спроби</th>
+										<th>Очки</th>
+									</tr>
+
+									<%for(var i=0;i<test.results.length;i++){%>
+											
+										<%if(test.results[i].test_res){%>	
+											<tr class="summary-row" onclick="showDetail(this)">
+												<td><a class="user-link" id="<%=test.results[i].user._id%>" onclick="loadUserInfo(this.id)"><%=test.results[i].user.firstname%> <%=test.results[i].user.lastname%></a></td>
+												<td><%=getTimeString(test.results[i].test_res.time)%></td>
+												<td><%=test.results[i].test_res.tries%></td>
+												<td><%=test.results[i].test_res.points%></td>
+											</tr>
+
+											<tr style="display: none" class="detail-tr">
+												<td colspan="4">
+													<table class="detail-table">
+														<tr>
+															
+															<th>Гра</th>
+															<th>Час</th>
+															<th>Спроби</th>
+															<th>Відповідь</th>
+															
+														</tr>
+														<%for(var j=0;j<test.results[i].test_res.games.length;j++){%>
+															<tr>
+																
+																<td><%=test.results[i].test_res.games[j].name%></td>
+																<td><%=getTimeString(test.results[i].test_res.games[j].time)%></td>
+																<td><%=test.results[i].test_res.games[j].tries%></td>
+
+																<%if(test.results[i].test_res.games[j].answer){%>
+																	<td class="true-td"></td>
+																<%}else{%>
+																	<td class="false-td"></td>
+																<%}%>	
+															</tr>
+														<%}%>
+													</table>
+												</td>
+											</tr>
+										<%}%>
+									<%}%>
+								</table>
+							</div>
+					<%}else{%>
+
+						<div class="empty">
+							<img src="/images/empty.png" width="20%">
+							<h1>Ніхто ще не пройшов цей тест</h1>
+							<a href="/admin-page/test-overview">Назад</a>
+						</div>
+
+					<%}%>
+				</div>
+		</div>
+
+
+		<div class="cover-div" id="cover-div" onclick="closeUserInfo()" style="display: none;">
+			<div class="user-info" id="user-info" onclick="window.event.cancelBubble = true;"> 
+
+				<div class="tool-panel">
+					<input type="button" class="close-btn" value="X" onclick="closeUserInfo() ">
+				</div>
+				<div class="user-image">
+					<img src="/images/person-round.png" width="50px">
+				</div>
+
+				<div class="info">
+					<ul class="user-list">
+						<li id="user-role"></li>
+						<li id="user-name"></li>
+						<li> <a target="_blank" id="user-email"> </a> </li>
+					</ul>
+				</div>
+
+			</div>
 		</div>
 	</div>
 

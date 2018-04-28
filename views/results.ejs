@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Result</title>
+	<title>Результати</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/results.css">
 	<script type="text/javascript" src="/javascripts/time_convert.js"></script>
 </head>
@@ -51,35 +52,39 @@
 	</div>	
 <script type="text/javascript">
 		var res = <%- JSON.stringify(result)%>;
-		
-
+		console.log(res.test_res);
 		var table = document.getElementById("res-table");
-		for(var i = 0; i < res.test_res.games.length; i++){
-			var row = table.insertRow(i+1);
-			var j =0;
-			for (var key in res.test_res.games[i]){
-				var cell = row.insertCell(j++);
-				
-				switch(key){
-					case "answer":
-						if(res.test_res.games[i][key]){
-							cell.classList.add("right-answer");
-						}
-						else {
-							cell.classList.add("wrong-answer");
-						}
-						break;
+		if(res.test_res.points>=0){
+			
+			for(var i = 0; i < res.test_res.games.length; i++){
+				var row = table.insertRow(i+1);
+				var j =0;
+				for (var key in res.test_res.games[i]){
+					var cell = row.insertCell(j++);
+					
+					switch(key){
+						case "answer":
+							if(res.test_res.games[i][key]){
+								cell.classList.add("right-answer");
+							}
+							else {
+								cell.classList.add("wrong-answer");
+							}
+							break;
 
-					case "time": 
-						cell.innerHTML = getTimeString(res.test_res.games[i][key]);
-						break;
+						case "time": 
+							cell.innerHTML = getTimeString(res.test_res.games[i][key]);
+							break;
 
-					default: 
-						cell.innerHTML = res.test_res.games[i][key];
+						default: 
+							cell.innerHTML = res.test_res.games[i][key];
+					}
 				}
 			}
+		}else{
+			table.innerHTML = "";
+			table.innerHTML = "<h1>Ваші результати анульовані через недотримання правил</h1>";
 		}
-
 	</script>
 
 </body>

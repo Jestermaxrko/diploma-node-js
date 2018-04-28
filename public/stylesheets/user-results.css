@@ -1,9 +1,213 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
 
 .res-page{
 	background-color: white;
+	display: flex;
+	padding: 10px;
+
 }
 
+
+/*----------------------INFO-------------------------*/
+
+.test-info{
+	flex: 1;
+	width: 30%;
+	text-align: center;
+	font-family: 'Roboto Condensed', sans-serif;
+	padding: 5px 2px;
+	margin-right: 5px;
+	box-sizing: border-box;
+	
+}
+
+#display-name{
+	text-align: left;
+}
+
+.logo{
+	width: 50%;
+	vertical-align: middle;
+}
+
+#test-name{
+	font-weight: normal;
+	font-size: 1.3em;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0;
+	margin: 2px 0;
+
+}
+
+input{
+	font-family: 'Roboto Condensed', sans-serif;
+	outline: 0;
+	border:none;
+	box-sizing: border-box;
+}
+
+#edit-name{
+	margin-bottom: 5px;
+}
+
+#edit-btn{
+	background: url("/images/pencil.png") no-repeat center;
+	background-size: 20px;
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+
+.edit-title{
+	text-align: left;
+	overflow: hidden;
+	margin-bottom: 2px;
+}
+
+
+#close-editor-btn{
+	float: right;
+	background-color: #fc5353;
+	vertical-align: middle;
+	color: white;
+	border-radius: 4px;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+#close-editor-btn:hover{
+	opacity: 0.7;
+}
+
+#edit-name{
+	margin-top: 10px;
+}
+
+
+
+#new-name{
+	padding: 5px 5px;
+	border:2px solid #c793ff;
+	display: block;
+	width: 100%;
+	color: #673489;
+	font-weight: bold;
+	font-weight: 1.5em;
+
+}
+
+#new-name::placeholder{
+	color: #c793ff;
+}
+
+#new-name:focus{
+	border:2px solid #673489 ;
+
+}
+
+#save-btn{
+	margin-top: 10px;
+	display: block;
+	width: 100%;
+	padding: 5px;
+	background-color: #9bbf53;
+	color: white;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+#save-btn:hover{
+	opacity: 0.7;
+}
+
+.active-div{
+	vertical-align: middle;
+	margin-bottom:  5px;
+}
+
+#checkBox{
+	width: 15px;
+	height: 15px;
+}
+
+.active-div input, .active-div label{
+	vertical-align: middle;
+}
+
+.buttons{
+
+}
+
+.buttons input{
+	display: block;
+	width: 100%;
+	margin-bottom: 5px;
+	padding: 5px;
+	color: white;
+	font-size: 1.1em;
+	box-sizing: border-box;
+	background-color: #825454;
+	cursor: pointer;
+}
+
+.buttons input:hover{
+	opacity: 0.7;
+}
+
+#clear-btn{
+	/*background-color: #6adadd;*/
+}
+
+
+#delete-btn{
+	/*background-color: #dd4d4d;*/
+}
+
+
+#accept-message{
+	margin-bottom: 2px;
+	color: #e53232;
+}
+
+.accept-btns{
+	margin-top: 5px;
+}
+
+#accept-block input{
+	padding: 5px 20px;
+	color: white;
+	cursor: pointer;
+
+}
+
+#accept-block input:hover{
+	opacity: 0.7;
+}
+
+
+
+#yes-btn{
+	background-color: #333;
+}
+
+#no-btn{
+	font-weight: bold;
+	background-color: #2ead56;
+
+}
+
+/*--------------------RES--------------------------*/
+
+
+.test-res-div{
+	width: 70%;
+}
 
 #test-results{
 	border-bottom: 2px solid #36e2dd;
@@ -18,15 +222,17 @@
 	padding: 5px 0;
 }
 
-.logo{
-	width: 40px;
-	vertical-align: middle;
-}
 
 .head-div h1{
 	vertical-align: middle;
 	display: inline;
 	margin-left: 5px;
+}
+
+.del-btn{
+	float: left;
+	width: 20px;
+	height: 20px;
 }
 
 
@@ -88,11 +294,18 @@
 }
 
 /*----------------------------------------------------------------------------------*/
+
+.table-div{
+	overflow-y: auto;
+}
+
+
 .res-table{
 	font-family: 'Montserrat', sans-serif;
 	width: 100%;
 	border-collapse: collapse;
 	text-align: center;
+	box-sizing: border-box;
 	background-color: #f7fffe;
 }
 
@@ -153,3 +366,100 @@
 	margin:0;
 	padding: 10px;
 }
+
+
+/**-----------------INFO USER ---------------------------------**/
+
+.user-link{
+	text-decoration: underline;
+	color: blue;
+}
+
+.cover-div{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 100%;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+}
+
+.user-info{
+	width: 30%;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	top: 30%;
+	background-color: white;
+	margin: auto;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.tool-panel{
+	overflow: hidden;
+}
+
+.close-btn{
+	float: right;
+	margin: 5px;
+	margin-bottom: 0;
+	width: 20px;
+	height: 20px;
+	font-weight: bold;
+	text-align: center;
+	outline: 0;
+	border: none;
+	background-color: #fc5353;
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.close-btn:hover{
+	opacity: 0.7;
+}
+
+.user-image{
+	text-align: center;
+	margin: 0 40px;
+	border-bottom: 1px solid #ccc;
+}
+
+.user-list{
+	list-style: none;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+.user-list li{
+	padding: 5px;
+}
+
+
+/**=---------------MEDIA QUERIES-----------------------*/
+
+
+@media only screen and (max-width: 800px){
+
+
+
+	.cover-div,.detail-table,.detail-tr{
+		display: none;
+	}
+
+	.res-page{
+		display: block;
+	}
+
+	.test-info, .test-res-div{
+		display: block;
+		width: 100%;
+	}
+ 
+} 

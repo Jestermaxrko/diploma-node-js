@@ -9,6 +9,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var expressValidator = require('express-validator');
 var $ = require('jQuery');
+var favicon = require('serve-favicon');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -44,6 +45,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(__dirname + '/public/images/favicon2.ico'));
 
 app.use('/', index);
 app.use('/users', users);
@@ -63,7 +65,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {message: err.message, status: err.status, stack: err.stack});
 });
 
 module.exports = app;

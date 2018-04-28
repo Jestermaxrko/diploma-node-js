@@ -190,12 +190,12 @@ router.get('/tests/:id', function (req, res, next) {
 	}
 	else{
 
-		
 		Test.find({$and: [ {_id:req.params.id}, {"results.user": req.session.userId}] },function(err, user){
 			if(user.length==0){
-				res.render("testPage");
+				Test.findOne({_id: req.params.id}, function(err, test){
+					res.render("testPage",{active: test.active});
+				});
 			}else{
-			
 					//res.redirect('/tests');
 				res.redirect('/results/'+req.params.id);
 			}
@@ -219,7 +219,11 @@ router.get('/results/:id', function(req, res, next) {
 			var date = getDateString(one_result.date);		
 			res.render("results",{ result: one_result, date: date});
 		}else{
+
+			
 			res.redirect("/tests/"+req.params.id);
+
+			
 		}
 
 	});	
@@ -300,7 +304,7 @@ router.get('/admin-page', function(req, res, next){
 });
 
 
-router.get('/admin-page/test-results', function(req, res, next){
+router.get('/admin-page/test-overview', function(req, res, next){
 
 
 
@@ -318,7 +322,7 @@ router.get('/admin-page/test-results', function(req, res, next){
 });
 
 
-router.get('/admin-page/result/:id', function(req, res, next){
+router.get('/admin-page/test-overview/:id', function(req, res, next){
 
 	var condition = req.session.condition || "points";
 	delete req.session.condition;
@@ -326,17 +330,21 @@ router.get('/admin-page/result/:id', function(req, res, next){
 	Test.findOne({"_id": req.params.id}).populate("results.user").exec(function(err, test){
 
 
-		if(condition=="points"){
-			test.results.sort(function(a,b){
-				 return b["test_res"][condition] - a["test_res"][condition]; 
-			});
-		}else{
-			test.results.sort(function(a,b){
-				 return a["test_res"][condition] - b["test_res"][condition]; 
-			});
-		}
+		if(test){
+			if(condition=="points"){
+				test.results.sort(function(a,b){
+					 return b["test_res"][condition] - a["test_res"][condition]; 
+				});
+			}else{
+				test.results.sort(function(a,b){
+					 return a["test_res"][condition] - b["test_res"][condition]; 
+				});
+			}
 
-		res.render("user-results",{test: test, condition:condition});
+			res.render("user-results",{test: test, condition:condition});
+		}else{
+			res.redirect("/admin-page/test-overview");
+		}
 	});
 });
 
@@ -363,23 +371,64 @@ router.post('/postTest', function(req, res, next){
 		name:  req.body.name,
 		img:  req.body.img,
 		description: req.body.desc,
+		active: true,
 		games:  JSON.parse(req.body.games)
 	}
 
-	Test.create(test);
+	Test.create(test, function(err, test){
 
-	if(req.body.imgBase64){
-		var data_url = req.body.imgBase64;
-	    var matches = data_url.match(/^data:.+\/(.+);base64,(.*)$/);
-	    var ext = matches[1];
-	    var base64_data = matches[2];
-	    var buffer = new Buffer(base64_data, 'base64');
+		if(req.body.imgBase64){
+			var data_url = req.body.imgBase64;
+		    var matches = data_url.match(/^data:.+\/(.+);base64,(.*)$/);
+		    var ext = matches[1];
+		    var base64_data = matches[2];
+		    var buffer = new Buffer(base64_data, 'base64');
 
-	    fs.writeFile('public/images/logo/'+ req.body.img, buffer, function (err) {
-	        console.log('done');
-	    });
-	 }
+		    fs.writeFile('public/images/logo/'+ req.body.img, buffer, function (err) {
+		        console.log('done');
+		    });
+	 	}
+
+	 	res.send(test._id);
+
+	});
+
+	
 });
+
+
+router.post('/updateTest', function(req, res, next){
+
+	console.log("YEEEEEEEEEEEEEEEEES");
+	const str = req.body.id;
+	const test_id = str.substring(str.lastIndexOf("/") + 1);
+	
+	Test.update({_id: test_id},{active: req.body.active, name: req.body.name},{upsert:true}, function(err, obj){
+		console.log(err);
+	});
+
+});
+
+
+router.post('/clearResults', function(req, res, next){
+	const str = req.body.id;
+	const test_id = str.substring(str.lastIndexOf("/") + 1);
+
+	Test.update({_id: test_id},{results: []},{upsert:true}, function(err, obj){
+		res.send();
+	});
+});
+
+
+router.post('/deleteTest', function(req, res, next){
+	const str = req.body.id;
+	const test_id = str.substring(str.lastIndexOf("/") + 1);
+
+	Test.remove({_id: test_id}, function(err, obj){
+		res.send("/admin-page/test-overview");
+	})
+})
+
 
 router.get('/sort_res', function(req, res, next){
 	req.session.condition = req.query.condition;
@@ -394,6 +443,13 @@ router.post('/searchTest', function(req, res, next){
 	req.session.test_search_name = req.body.search;
 	res.redirect("/admin-page/test-results");
 });
+
+router.get('/getUser', function(req, res, next){
+	User.findOne({_id: req.query.id},function(err, user){
+		console.log(user);
+		res.send(user);
+	})
+})
 
 
 function getDateString (timestamp){

@@ -167,6 +167,12 @@ header span{
 	border-bottom: 1px solid green;
 }
 
+.close{
+	color: #ef6464;
+	margin-top: 10px;
+	font-family: 'Scada', sans-serif;
+}
+
 
 @media only screen and (max-width: 900px){
 
